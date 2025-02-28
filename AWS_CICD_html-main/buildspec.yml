@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14.10.0  # Use your required Node.js version
+    commands:
+      - echo Installing NGINX
+      - sudo apt-get update
+      - sudo apt-get install nginx -y
+      - echo "Installing dependencies..."
+      - npm install  # Install packages
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo "Building the Node.js application..."
+      - npm run build  # Run build step (if applicable)
+  post_build:
+    commands:
+      - echo Configuring NGINX
+artifacts:
+  files:
+    - "**/*"
